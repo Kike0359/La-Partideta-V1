@@ -1,0 +1,46 @@
+import React from 'react';
+import { AlertCircle } from 'lucide-react';
+
+interface ConfirmModalProps {
+  message: string;
+  onConfirm: () => void;
+  onCancel: () => void;
+}
+
+export const ConfirmModal: React.FC<ConfirmModalProps> = ({
+  message,
+  onConfirm,
+  onCancel,
+}) => {
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-lg shadow-2xl max-w-md w-full p-6">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="bg-blue-100 p-3 rounded-full">
+            <AlertCircle className="text-blue-600" size={24} />
+          </div>
+          <p className="text-lg text-gray-900 font-medium">
+            {message}
+          </p>
+        </div>
+
+        <div className="flex gap-3 mt-6">
+          <button
+            type="button"
+            onClick={onCancel}
+            className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 rounded-lg transition-colors"
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            onClick={onConfirm}
+            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-colors"
+          >
+            Aceptar
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
